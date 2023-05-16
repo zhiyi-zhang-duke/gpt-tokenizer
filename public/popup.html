@@ -15,9 +15,14 @@
       </div>
 
       <hr class="divider" />
-
-      <p class="title">Chrome Extension is Ready!</p>
-      <p class="subtitle">Start by updating <code>popup.html</code></p>
+      
+      <label for="promptInput">Prompt:</label>
+      <textarea id="promptInput" placeholder="Enter a prompt"></textarea>
+      <label for="tokenizedInput">Tokenized text:</label>
+      <textarea id="tokenizedInput" placeholder="Enter tokenized text"></textarea>
+      <br />
+      <!-- We need to add a text box that specifies the token limit -->
+      <button id="submitButton">Submit</button>
     </div>
 
     <script src="popup.js"></script>

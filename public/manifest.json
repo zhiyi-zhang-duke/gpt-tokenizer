@@ -26,6 +26,7 @@
       ],
       "run_at": "document_idle",
       "js": [
+        "node_modules/gpt-3-encoder/Encoder.js",
         "contentScript.js"
       ]
     }

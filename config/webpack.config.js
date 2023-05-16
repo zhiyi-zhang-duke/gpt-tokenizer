@@ -14,6 +14,12 @@ const config = (env, argv) =>
       background: PATHS.src + '/background.js',
     },
     devtool: argv.mode === 'production' ? false : 'source-map',
+    resolve: {
+      fallback: {
+        fs: false,
+        path: require.resolve('path-browserify'),
+      },
+    }    
   });
 
 module.exports = config;
