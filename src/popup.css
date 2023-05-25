@@ -16,7 +16,7 @@ html {
 
 body {
   width: 350px;
-  height: 900px;
+  height: 600px;
 }
 
 .app {
@@ -45,16 +45,6 @@ code {
   background-color: rgba(254, 237, 185, 0.3);
   padding: 2px 4px;
   border-radius: 2px;
-}
-
-.counter-label {
-  font-size: 12px;
-  margin-bottom: 5px;
-}
-
-.counter {
-  font-size: 36px;
-  font-weight: 700;
 }
 
 .button-container {

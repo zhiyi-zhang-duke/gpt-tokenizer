@@ -13,3 +13,7 @@ npm-debug.log*
 
 # packed files
 /release
+
+/node_modules/
+
+/config/dist/

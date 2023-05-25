@@ -2,36 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>My Chrome Extension</title>
+    <title>Gpt Tokenizer</title>
     <link rel="stylesheet" href="popup.css" />
   </head>
   <body>
     <div class="app">
-      <p class="counter-label">Counter</p>
+      <!-- <p class="counter-label">Counter</p>
       <div id="counter" class="counter"></div>
       <div class="button-container">
         <button id="decrementBtn" class="button">-</button>
         <button id="incrementBtn" class="button">+</button>
-      </div>
-
-      <hr class="divider" />
+      </div>-->
       
-      <label for="promptInput">Prompt:</label>
+      <label for="promptInput" class="title">Prompt:</label>
       <textarea id="promptInput" placeholder="Enter a prompt"></textarea>
-      <label for="tokenizedInput">Tokenized text:</label>
+      <hr class="divider" />
+      <label for="tokenizedInput" class="title">Tokenized text:</label>
       <textarea id="tokenizedInput" placeholder="Enter tokenized text"></textarea>
       <br />
       <!-- We need to add a text box that specifies the token limit -->
-      <button id="submitButton">Submit</button>
+      <button id="submitButton" class="button">Submit</button>
     </div>
 
     <script src="popup.js"></script>
-
-    <!--
-      This HTML file opens when you click on icon from the toolbar.
-
-      To begin the development, run `npm run watch`.
-      To create a production bundle, use `npm run build`.
-    -->
   </body>
 </html>
