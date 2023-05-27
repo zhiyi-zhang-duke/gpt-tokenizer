@@ -30,14 +30,32 @@ chrome.runtime.sendMessage(
   }
 );
 
-// Listen for message
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.type === 'COUNT') {
-    console.log(`Current count is ${request.payload.count}`);
-  }
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  if (request.type === 'CHANGE') {
+    console.log("Changing the title of the current tab")
+    document.title = request.payload.title;
 
+    //Test functionality
+    const textarea = document.getElementById('prompt-textarea');
+    if (!textarea) {
+      console.error('Textarea element with ID "prompt-textarea" not found.');
+      return;
+    }
+  
+    textarea.innerHTML = "Hello world";
+
+    const event = new KeyboardEvent('keydown', {
+      key: 'Enter',
+      code: 'Enter',
+      which: 13,
+      keyCode: 13,
+      bubbles: true,
+    });
+    textarea.dispatchEvent(event);
+  }
   // Send an empty response
   // See https://github.com/mozilla/webextension-polyfill/issues/130#issuecomment-531531890
   sendResponse({});
   return true;
 });
+
