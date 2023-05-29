@@ -51,7 +51,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
       keyCode: 13,
       bubbles: true,
     });
-    textarea.dispatchEvent(event);
+    
   }
   // Send an empty response
   // See https://github.com/mozilla/webextension-polyfill/issues/130#issuecomment-531531890
@@ -59,3 +59,36 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   return true;
 });
 
+chrome.runtime.onMessage.addListener(async function (request, sender, sendResponse) {
+  if (request.type === 'CHUNKSUBMIT') {
+    console.log("Chunked text to input:", request.payload.chunkedText);
+
+    //Test functionality
+    const textarea = document.getElementById('prompt-textarea');
+    if (!textarea) {
+      console.error('Textarea element with ID "prompt-textarea" not found.');
+      return;
+    }
+  
+    for (let i = 0; i < request.payload.chunkedText.length; i++) {
+      console.log("Inputing text...")
+      textarea.innerHTML = request.payload.chunkedText[i];
+      const event = new KeyboardEvent('keydown', {
+        key: 'Enter',
+        code: 'Enter',
+        which: 13,
+        keyCode: 13,
+        bubbles: true,
+      });
+      textarea.dispatchEvent(event);
+      // This somehow breaks things...
+      // await new Promise(resolve => setTimeout(resolve, 10000));
+      // TODO: Find stop generating button's id and use that
+      console.log('Waiting for OpenAI...'); 
+    }
+  }
+  // Send an empty response
+  // See https://github.com/mozilla/webextension-polyfill/issues/130#issuecomment-531531890
+  sendResponse({});
+  return true;
+});
